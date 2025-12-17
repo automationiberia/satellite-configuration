@@ -1,3 +1,5 @@
 vars/test_vars.yml
 configs/*
 collections/*
+*.log
+*artifact*.json
