@@ -9,13 +9,10 @@
 
 - name: Domains | Set Info List
   ansible.builtin.set_fact:
-    info_list: "{{ __domain_result_api_response.domains | sort(attribute='id') }}" # removed filter | rejectattr('name','==', 'Default Organization')
-
-- name:
-  debug:
-    msg: "{{ info_list }}"  
+    info_list: "{{ __domain_result_api_response.domains | sort(attribute='id') }}"
 
 - name: Domains | Template Out Results
   include_tasks: template_out.yml
   vars:
     template_type: domains
+...
