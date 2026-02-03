@@ -27,29 +27,3 @@ satellite_operatingsystems:
 {%-  endfor %}
 {% endfor %}
 ...
-{#
----
-satellite_operatingsystems: {{ [] if detailed_info.results | length == 0 }}
-{% for os in detailed_info.results %}
-  - name: "{{ os.json.name | trim }}"
-    description: "{{ os.json.description }}"
-    os_family: "{{ os.json.family }}"
-    major: "{{ os.json.major }}"
-    password_hash: "{{ os.json.password_hash }}"
-    state: present
-{% set os_architectures = os.json.architectures %}
-{% if os_architectures != None %}
-    architectures:
-{% for architecture in os_architectures %}
-      - "{{ architecture.name }}"
-{% endfor %}
-{% endif %}
-{% set os_ptables = os.json.ptables %}
-{% if os_ptables != None %}
-    ptables:
-{% for ptable in os_ptables %}
-      - "{{ ptable.name }}"
-{% endfor %}
-{% endif %}
-{% endfor %}
-#}
