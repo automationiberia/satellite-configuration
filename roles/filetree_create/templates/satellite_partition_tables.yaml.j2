@@ -12,9 +12,9 @@ satellite_partition_tables:
 {%   for __map_item in (i | dict2items) if __map_item.key not in __excluded_fields and __map_item.value not in __empty_values %}
 {%     if __map_item.key in __raw_fields %}
   {{ '-' if loop.index == 1 else ' ' }} {{ __map_item.key }}: |-
-      {{ '{% raw %}' }}
-      {{ discard_unwanted_fields(__map_item.value, __excluded_fields, __empty_values, __reduce_to_name, __translate) | indent(6) }}
-      {{ '{% endraw %}' }}
+      {{ '{%- raw -%}' }}
+      {{ discard_unwanted_fields(__map_item.value, __excluded_fields, __empty_values, __reduce_to_name, __translate) | trim("'") | indent(6) }}
+      {{ '{%- endraw -%}' }}
 {%     elif __map_item.key in __list_items_to_name %}
   {{ '-' if loop.index == 1 else ' ' }} {{ __map_item.key }}:
 {%       for __inner_item in __map_item.value %}
