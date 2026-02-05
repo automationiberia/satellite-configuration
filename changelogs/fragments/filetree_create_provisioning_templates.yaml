@@ -1,5 +1,4 @@
 ---
 bugfixes:
   - Fix the filetree_create role as the provisioning template's output needs to have the operatingsystem's title instead of it's name to let the dispatch to work properly.
-  - Fix the clean_fields.j2 template to remove spaces at the end of lines as they were preventing the 'yq -P' to process raw data correctly.
 ...
